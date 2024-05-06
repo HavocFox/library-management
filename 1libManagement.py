@@ -22,3 +22,9 @@ Menu.main_menu()
 
 
 #invalid isbn on the digit side makes it print twice
+# track the current user, so probably prompt to add the user before doing anything
+# need to make sure users are for SURE tracking how many books they borrowed - i hope the class objects are forming correctly.
+# author operations should be simple. I 'm assuming the author database is just a separate thing for the books and is specifically for containing author details
+                # EX. even if an author has a book in the library that doesnt mean we know anyting about them...
+
+                # Unrelated, but we didn't do the ECommerce thing yet.

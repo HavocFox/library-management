@@ -18,7 +18,7 @@ class Operations:
                         break
                 else:
                     print("Please enter a valid ISBN.")
-                    
+
         genre = input("Please enter the book's genre. ")
         while True:
                 pubdate = input("Please enter the book's publication date (YYYY-MM-DD). ")
@@ -35,5 +35,23 @@ class Operations:
     # Search for a book: > Refer to book.py.
     # Display books: > Refer to book.py.
 
+    #--------------------------------------------------------------
+    # USER OPERATIONS ----------------------------------------------
+    # Add a user:
+    def add_user():
+        name = input("Please enter the user's name. ")
+        userid = input("Please enter the user's library ID. ")
+
+
+        print("Adding book... ")
+        User.add_user(name, userid)
+
+    # Borrow a book: > Refer to book.py.
+    # Return a book: > Refer to book.py.
+    # Search for a book: > Refer to book.py.
+    # Display books: > Refer to book.py.
+
 from menu import Menu
 from book import Book
+from author import Author
+from user import User
