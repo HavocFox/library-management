@@ -1,8 +1,15 @@
 class Author:
     all_authors = {}
     def __init__(self, name, biography):
-        self.name = name
-        self.biography = biography
+        self.__name = name
+        self.__biography = biography
+
+    # Getter methods for private attributes
+    def get_name(self):
+        return self.__name
+
+    def get_biography(self):
+        return self.__biography
 
     # Add an author (Based on input from Operations) ------------------------
     @classmethod
@@ -13,19 +20,19 @@ class Author:
             return
         else:
             pass
-        new_auth = Author(name = name1, biography = bio1)       # Create a new Author object
+        new_auth = Author(name1, bio1)       # Create a new Author object
         self.all_authors[name1] = new_auth                      # Add the Author to the dictionary with name as key
 
-        print("Author added successfully! /n")
+        #print("Author added successfully! /n")
 
     # Display author details ------------------------------------------------------
     def auth_details():
-        authchoice = input("What author do you want to view the details of? ")
-        if authchoice in Author.all_authors:
-            curauth = Author.all_authors[authchoice]
-            print(f"Name: {curauth.name}, Biography: {curauth.biography} \n")
+        auth_choice = input("What author do you want to view the details of? ")
+        if auth_choice in Author.all_authors:
+            cur_auth = Author.all_authors[auth_choice]
+            print(f"Name: {cur_auth.get_name()}\nBiography: {cur_auth.get_biography()}\n")
         else:
-           print("That author has no details in our database.\n")
+            print("That author has no details in our database.\n")
 
 
     # Display all authors ------------------------------------------------------
@@ -33,6 +40,6 @@ class Author:
         print("\nDisplaying all authors:")
         if Author.all_authors:
             for name, auth in Author.all_authors.items():
-                print(f"Name: {name}\nBiography: {auth.biography}\n")
+                print(f"Name: {auth.get_name()}\nBiography: {auth.get_biography()}\n")
         else:
             print("There aren't any authors in the database.\n")

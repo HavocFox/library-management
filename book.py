@@ -1,20 +1,35 @@
 class Book:
     all_books = {}
     def __init__(self, title, author, isbn, genre, pubdate):
-        self.title = title
-        self.author = author
-        self.isbn = isbn
-        self.genre = genre
-        self.pubdate = pubdate
-        self.avail = True
+        self.__title = title
+        self.__author = author
+        self.__isbn = isbn
+        self.__genre = genre
+        self.__pubdate = pubdate
+        self.__avail = True
 
-    # Getter for availability -------------------------------------------
+    # Getter methods for private attributes
+    def get_title(self):
+        return self.__title
+
+    def get_author(self):
+        return self.__author
+
+    def get_isbn(self):
+        return self.__isbn
+
+    def get_genre(self):
+        return self.__genre
+
+    def get_pubdate(self):
+        return self.__pubdate
+
     def is_available(self):
-        return self.avail
+        return self.__avail
 
-   # Setter for availability --------------------------------------------
+    # Setter method for availability
     def set_availability(self, status):
-        self.avail = status
+        self.__avail = status
 
 
    # Add a book (Based on input from Operations) ------------------------
@@ -70,19 +85,20 @@ class Book:
         book_title = input("Please enter the title of the book you'd like to search for: ")
 
         if Book.all_books:
-            print("Found it! Here's its info: ")
             if book_title in Book.all_books:
-                    book = Book.all_books[book_title]
-                    print(f"Title: {book.title}, Author: {book.author}, ISBN: {book.isbn}, Genre: {book.genre}, Publication Date: {book.pubdate}, Is it available? {book.is_available()}\n")
+                book = Book.all_books[book_title]
+                print(f"Title: {book.get_title()}, Author: {book.get_author()}, ISBN: {book.get_isbn()}, Genre: {book.get_genre()}, Publication Date: {book.get_pubdate()}, Is it available? {book.is_available()}\n")
+            else:
+                print(f"'{book_title}' is not in the library.\n")
         else:
-            print(f"'{book_title}' is not in the library.\n")
+            print("There aren't any books in the library.\n")
 
     # Search for a book ------------------------------------------------------
     def display_book():
         print("\nDisplaying all books: ")
         if Book.all_books:
             for title, book in Book.all_books.items():
-                print(f"Title: {title}, Author: {book.author}, ISBN: {book.isbn}, Genre: {book.genre}, Publication Date: {book.pubdate}, Is it available? {book.is_available()}\n")
+                print(f"Title: {book.get_title()}, Author: {book.get_author()}, ISBN: {book.get_isbn()}, Genre: {book.get_genre()}, Publication Date: {book.get_pubdate()}, Is it available? {book.is_available()}\n")
         else:
             print("There aren't any books in the library.\n")
 

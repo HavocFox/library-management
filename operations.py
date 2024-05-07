@@ -24,7 +24,7 @@ class Operations:
                 else:
                      break
 
-        print("Adding book... ")
+        print("Adding book... \n")
         Book.add_book(title, author, isbn, genre, pubdate)
 
     # Borrow a book: > Refer to book.py.
@@ -40,7 +40,7 @@ class Operations:
         userid = input("Please enter the user's library ID. ")
 
 
-        print("Adding user... ")
+        print("Adding user... \n")
         User.add_user(name, userid)
 
     # Refer to user.py for display users and display current user details.
@@ -53,7 +53,7 @@ class Operations:
         authorbio = input("Please enter the author's biography. ")
 
 
-        print("Adding author... ")
+        print("Adding author... \n")
         Author.add_author(name, authorbio)
 
     # Refer to author.py for display authors and display author details.

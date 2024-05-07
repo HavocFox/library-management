@@ -3,9 +3,19 @@ class User:
     current_user = "default"
     first_user = True
     def __init__(self, name, library_id):
-        self.name = name
-        self.library_id = library_id
-        self.borrowed_books = []
+        self.__name = name
+        self.__library_id = library_id
+        self.__borrowed_books = []
+
+    # Getter methods for private attributes
+    def get_name(self):
+        return self.__name
+
+    def get_library_id(self):
+        return self.__library_id
+
+    def get_borrowed_books(self):
+        return self.__borrowed_books
 
     # Add a user (Based on input from Operations) ------------------------
     @classmethod
@@ -34,19 +44,20 @@ class User:
             else:
                 return
 
-    # Display user details ------------------------------------------------------
+    # Display user details --------------------------------------------------
     def user_details():
         print("Viewing details of current user:")
         if User.current_user in User.all_users:
             curuser = User.all_users[User.current_user]
-            print(f"Name: {curuser.name}, Library ID: {curuser.library_id} \nBooks borrowed:")
-            if curuser.borrowed_books:
-                for book in curuser.borrowed_books:
+            print(f"Name: {curuser.get_name()}, Library ID: {curuser.get_library_id()} \nBooks borrowed:")
+            borrowed_books = curuser.get_borrowed_books()
+            if borrowed_books:
+                for book in borrowed_books:
                     print(book)
             else:
-                print("None borrowed")
+                print("None borrowed\n")
         else:
-           print("Current user does not exist.")
+            print("Current user does not exist.")       # this should not happen!
 
 
     # Search for a book ------------------------------------------------------
@@ -54,9 +65,10 @@ class User:
         print("\nDisplaying all users:")
         if User.all_users:
             for name, user in User.all_users.items():
-                print(f"Name: {name}, Library ID: {user.library_id}\nBooks borrowed:")
-                if user.borrowed_books:
-                    for book in user.borrowed_books:
+                print(f"Name: {user.get_name()}, Library ID: {user.get_library_id()}\nBooks borrowed:")
+                borrowed_books = user.get_borrowed_books()
+                if borrowed_books:
+                    for book in borrowed_books:
                         print(book)
                 else:
                     print("None borrowed")
