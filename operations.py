@@ -11,13 +11,10 @@ class Operations:
         author = input("Please enter the book's author. ")
         while True:
                 isbn = input("Please enter the book's ISBN. ")
-                if len(isbn) != 10 and len(isbn) != 13:
+                if len(isbn) not in (10, 13) or not isbn.isdigit():
                     print("Please enter a valid ISBN.")
-                if isbn.isdigit():
-                    if len(isbn) == 10 or len(isbn) == 13:
-                        break
                 else:
-                    print("Please enter a valid ISBN.")
+                    break
 
         genre = input("Please enter the book's genre. ")
         while True:

@@ -13,8 +13,10 @@ class Author:
             return
         else:
             pass
-        new_auth = Author(name = name1, biography = bio1)  # Create a new Book object
-        self.all_authors[name1] = new_auth  # Add the book to the dictionary with title as key
+        new_auth = Author(name = name1, biography = bio1)       # Create a new Author object
+        self.all_authors[name1] = new_auth                      # Add the Author to the dictionary with name as key
+
+        print("Author added successfully! /n")
 
     # Display author details ------------------------------------------------------
     def auth_details():
@@ -31,6 +33,6 @@ class Author:
         print("\nDisplaying all authors:")
         if Author.all_authors:
             for name, auth in Author.all_authors.items():
-                print(f"Name: {name}, Biography: {auth.biography}\n")
+                print(f"Name: {name}\nBiography: {auth.biography}\n")
         else:
             print("There aren't any authors in the database.\n")
