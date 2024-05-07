@@ -43,13 +43,23 @@ class Operations:
         userid = input("Please enter the user's library ID. ")
 
 
-        print("Adding book... ")
+        print("Adding user... ")
         User.add_user(name, userid)
 
-    # Borrow a book: > Refer to book.py.
-    # Return a book: > Refer to book.py.
-    # Search for a book: > Refer to book.py.
-    # Display books: > Refer to book.py.
+    # Refer to user.py for display users and display current user details.
+
+    #--------------------------------------------------------------
+    # AUTHOR OPERATIONS ----------------------------------------------
+    # Add an author:
+    def add_author():
+        name = input("Please enter the author's name. ")
+        authorbio = input("Please enter the author's biography. ")
+
+
+        print("Adding author... ")
+        Author.add_author(name, authorbio)
+
+    # Refer to author.py for display authors and display author details.
 
 from menu import Menu
 from book import Book

@@ -34,16 +34,24 @@ class Menu:
 
     def user_menu():
         print("\n----------------------------------------------------------")
-        print("User Operations:")
-        print("     1. Add a new user\n     2. View user details\n     3. Display all users\n     4. Back to main menu")
+
         while True:
+            print("User Operations:")
+            print("     1. Add a new user\n     2. View user details\n     3. Display all users\n     4. Back to main menu")
             try:
                 userchoice = int(input("Please enter a numeric selection. "))
             except ValueError:
                 print("Please enter a valid numeric selection.\n")
             else:
                 if userchoice == 1:
-                    print("woah")
+                    print("\nYou have chosen to add a user. ")
+                    Operations.add_user()
+                if userchoice == 2:
+                    print("\nYou have chosen to view the current user's details. ")
+                    User.user_details()
+                if userchoice == 3:
+                    print("\nYou have chosen to display all users. ")
+                    User.display_users()
                 if userchoice == 4:
                     return True         # Return to main menu
                 if userchoice < 1 or userchoice > 4:
@@ -51,19 +59,27 @@ class Menu:
 
     def author_menu():
         print("\n----------------------------------------------------------")
-        print("Author Operations:")
-        print("     1. Add a new author\n     2. View author details\n     3. Display all authors\n     4. Back to main menu")
+
         while True:
+            print("Author Operations:")
+            print("     1. Add a new author\n     2. View author details\n     3. Display all authors\n     4. Back to main menu")
             try:
                 authchoice = int(input("Please enter a numeric selection. "))
             except ValueError:
                 print("Please enter a valid numeric selection.\n")
             else:
-                if authchoice == 1:
-                    print("woah")
-                if authchoice == 4:
+                 if authchoice == 1:
+                    print("\nYou have chosen to add an author. ")
+                    Operations.add_author()
+                 if authchoice == 2:
+                    print("\nYou have chosen to view an author's details. ")
+                    Author.auth_details()
+                 if authchoice == 3:
+                    print("\nYou have chosen to display all authors. ")
+                    Author.display_authors()
+                 if authchoice == 4:
                     return True         # Return to main menu
-                if authchoice < 1 or authchoice > 4:
+                 if authchoice < 1 or authchoice > 4:
                     print("Please enter a valid numeric selection.\n")
 
     def main_menu():
@@ -87,3 +103,6 @@ class Menu:
 
 from operations import Operations
 from book import Book
+from user import User
+from author import Author
+from menu import Menu

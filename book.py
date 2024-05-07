@@ -27,7 +27,8 @@ class Book:
         new_book = Book(title = title1, author = author1, isbn = isbn1, genre = genre1, pubdate = pubdate1)  # Create a new Book object
         self.all_books[title1] = new_book  # Add the book to the dictionary with title as key
 
-        print("Book added successfully!\n")
+        if User.first_user == False:
+            print("Book added successfully!\n")
 
     # Borrow a book ------------------------------------------------------
     def borrow_book():
@@ -38,6 +39,7 @@ class Book:
             book = Book.all_books[book_title]
             if book.is_available():
                 book.set_availability(False)  # Mark the book as borrowed
+                User.all_users[User.current_user].borrowed_books.append(book_title)  # Append the title of the book to the list of borrowed books
                 print(f"{book_title} has been borrowed.\n")
             else:
                 print(f"{book_title} has already been borrowed.\n")
@@ -52,8 +54,12 @@ class Book:
         if book_title in Book.all_books:
             book = Book.all_books[book_title]
             if not book.is_available():
-                book.set_availability(True)  # Mark the book as returned.
-                print(f"{book_title} has been returned.\n")
+                if book_title in User.all_users[User.current_user].borrowed_books:          # Did the current user actually borrow this book?
+                    book.set_availability(True)                             # Mark the book as returned.
+                    User.all_users[User.current_user].borrowed_books.remove(book)           # Remove the book object from the list of borrowed books
+                    print(f"{book_title} has been returned.\n")
+                else:
+                    print("Another user borrowed this book. To return it, please switch to that user. ")
             else:
                 print(f"{book_title} has already been returned.\n")
         else:
@@ -79,3 +85,5 @@ class Book:
                 print(f"Title: {title}, Author: {book.author}, ISBN: {book.isbn}, Genre: {book.genre}, Publication Date: {book.pubdate}, Is it available? {book.is_available()}\n")
         else:
             print("There aren't any books in the library.\n")
+
+from user import User
