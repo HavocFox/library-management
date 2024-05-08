@@ -32,6 +32,3 @@ while True:
 
 print(f"\nWelcome, {User.current_user}.\n")                     # Welcome the user that just logged in
 Menu.main_menu()                                                # Now we call the menus to display. From here we don't use this .py anymore
-
-
-                # Unrelated, but we didn't do the ECommerce thing yet.

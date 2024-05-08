@@ -1,17 +1,19 @@
 
 
 class Menu:
-    @staticmethod
+
+    # Display book menu and enable choices based on numeric selection.
+    @staticmethod     # During debugging and minor AI error checking - this came up - kept it, but debating whether to remain using it in the future. Will we learn this?
     def book_menu():
         print("\n----------------------------------------------------------")
         while True:
             print("Book Operations:")
             print("     1. Add a new book\n     2. Borrow a book\n     3. Return a book\n     4. Search for a book\n     5. Display all books\n     6. Back to main menu")
             try:
-                bookchoice = int(input("Please enter a numeric selection. "))
+                bookchoice = int(input("Please enter a numeric selection. "))       # Try to catch weird entries. We DO need to have ints here.
             except ValueError:
                 print("Please enter a valid numeric selection.\n")
-            else:
+            else:                                                                   # Call the function within the appropriate class if choice is valid.
                 if bookchoice == 1:
                     print("\nYou have chosen to add a book.")
                     Operations.add_book()
@@ -32,6 +34,7 @@ class Menu:
                 if bookchoice < 1 or bookchoice > 6:
                     print("Please enter a valid numeric selection.\n")
 
+    # Display user menu and enable choices based on numeric selection.
     def user_menu():
         print("\n----------------------------------------------------------")
 
@@ -39,10 +42,10 @@ class Menu:
             print("User Operations:")
             print("     1. Add a new user\n     2. View user details\n     3. Display all users\n     4. Back to main menu")
             try:
-                userchoice = int(input("Please enter a numeric selection. "))
+                userchoice = int(input("Please enter a numeric selection. "))       # Try to catch weird entries. We DO need to have ints here.
             except ValueError:
                 print("Please enter a valid numeric selection.\n")
-            else:
+            else:                                                                   # Call the function within the appropriate class if choice is valid.
                 if userchoice == 1:
                     print("\nYou have chosen to add a user. ")
                     Operations.add_user()
@@ -57,6 +60,7 @@ class Menu:
                 if userchoice < 1 or userchoice > 4:
                     print("Please enter a valid numeric selection.\n")
 
+    # Display author menu and enable choices based on numeric selection.
     def author_menu():
         print("\n----------------------------------------------------------")
 
@@ -64,10 +68,10 @@ class Menu:
             print("Author Operations:")
             print("     1. Add a new author\n     2. View author details\n     3. Display all authors\n     4. Back to main menu")
             try:
-                authchoice = int(input("Please enter a numeric selection. "))
+                authchoice = int(input("Please enter a numeric selection. "))       # Try to catch weird entries. We DO need to have ints here.
             except ValueError:
                 print("Please enter a valid numeric selection.\n")
-            else:
+            else:                                                                   # Call the function within the appropriate class if choice is valid.
                  if authchoice == 1:
                     print("\nYou have chosen to add an author. ")
                     Operations.add_author()
@@ -82,14 +86,16 @@ class Menu:
                  if authchoice < 1 or authchoice > 4:
                     print("Please enter a valid numeric selection.\n")
 
+
+    # Display main menu. Calls on intro but we can return to it.
     def main_menu():
         while True:
             print("\nMain Menu: \n     1. Book Operations\n     2. User Operations\n     3. Author Operations\n     4. Quit")
             try:
-                mainchoice = int(input("Please enter a numeric selection. "))
+                mainchoice = int(input("Please enter a numeric selection. "))       # Try to catch weird entries. We DO need to have ints here.
             except ValueError:
                 print("That is not a valid numeric selection.\n")
-            else:
+            else:                                                                   # Call the correct menu to display if choice is valid.
                 if mainchoice == 1:
                     Menu.book_menu()
                 if mainchoice == 2:
@@ -101,7 +107,7 @@ class Menu:
                 if mainchoice < 1 or mainchoice > 4:
                     print("Please enter a valid numeric selection.\n")
 
-from operations import Operations
+from operations import Operations       # We only need Operations here because here is where we transition to getting user input for adding entries to our classes.
 from book import Book
 from user import User
 from author import Author
